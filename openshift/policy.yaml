@@ -38,12 +38,12 @@ spec:
   # emailservice on the given port.
   podSelector:
     matchLabels:
-      role: checkoutservice
+      role: emailservice
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              role: emailservice
+              role: checkoutservice
       ports:
         - protocol: TCP
           port: 8080
@@ -57,12 +57,12 @@ spec:
   # paymentservice on the given port.
   podSelector:
     matchLabels:
-      role: checkoutservice
+      role: paymentservice
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              role: paymentservice
+              role: checkoutservice
       ports:
         - protocol: TCP
           port: 50051
@@ -167,7 +167,7 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-productcatalogservice-to-redis-cart
 spec:
-  # Allow the productcatalogservice to talk to the
+  # Allow the cartservice to talk to the
   # redis-cart on the given port.
   podSelector:
     matchLabels:
@@ -176,7 +176,7 @@ spec:
     - from:
         - podSelector:
             matchLabels:
-              role: productcatalogservice
+              role: cartservice
       ports:
         - protocol: TCP
           port: 6379
