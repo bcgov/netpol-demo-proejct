@@ -14,7 +14,6 @@
 #
 # Copyright 2020 The Province of British Columbia
 #
-
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
@@ -59,11 +58,11 @@ objects:
               command: ["/bin/grpc_health_probe", "-addr=:8080"]
           resources:
             requests:
-              cpu: 100m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -123,11 +122,11 @@ objects:
             #   value: "jaeger-collector:14268"
             resources:
               requests:
-                cpu: 100m
+                cpu: 40m
                 memory: 64Mi
               limits:
-                cpu: 200m
-                memory: 128Mi
+                cpu: 60m
+                memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -180,11 +179,11 @@ objects:
             value: "0"
           resources:
             requests:
-              cpu: 100m
-              memory: 220Mi
+              cpu: 40m
+              memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 450Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -258,11 +257,11 @@ objects:
             #   value: "jaeger-collector:14268"
             resources:
               requests:
-                cpu: 100m
+                cpu: 40m
                 memory: 64Mi
               limits:
-                cpu: 200m
-                memory: 128Mi
+                cpu: 60m
+                memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -274,7 +273,7 @@ objects:
       role: frontend
     ports:
     - name: http
-      port: 80
+      port: 8080
       targetPort: 8080
 - apiVersion: v1
   kind: Route
@@ -326,11 +325,11 @@ objects:
               command: ["/bin/grpc_health_probe", "-addr=:50051"]
           resources:
             requests:
-              cpu: 100m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -380,11 +379,11 @@ objects:
   #            value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: 100m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -429,11 +428,11 @@ objects:
             value: "0.0.0.0"
           resources:
             requests:
-              cpu: 200m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 300m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
           readinessProbe:
             initialDelaySeconds: 15
             exec:
@@ -490,11 +489,11 @@ objects:
               command: ["/bin/grpc_health_probe", "-addr=:7000"]
           resources:
             requests:
-              cpu: 100m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -544,11 +543,11 @@ objects:
   #            value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: 100m
+              cpu: 40m
               memory: 64Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 60m
+              memory: 92Mi
 - apiVersion: v1
   kind: Service
   metadata:
@@ -595,12 +594,12 @@ objects:
           - mountPath: /data
             name: redis-data
           resources:
-            limits:
-              memory: 256Mi
-              cpu: 125m
             requests:
-              cpu: 70m
-              memory: 200Mi
+              cpu: 40m
+              memory: 64Mi
+            limits:
+              cpu: 60m
+              memory: 92Mi
         volumes:
         - name: redis-data
           emptyDir: {}
@@ -646,11 +645,11 @@ objects:
           #  value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: 200m
-              memory: 180Mi
+              cpu: 80m
+              memory: 192Mi
             limits:
-              cpu: 300m
-              memory: 300Mi
+              cpu: 100m
+              memory: 256Mi
           readinessProbe:
             initialDelaySeconds: 20
             periodSeconds: 15
