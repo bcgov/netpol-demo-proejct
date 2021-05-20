@@ -700,7 +700,7 @@ spec:
   selector:
     matchLabels:
       role: loadgenerator
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       labels:
